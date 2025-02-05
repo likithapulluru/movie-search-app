@@ -11,12 +11,5 @@ const MovieCard = ({ movie }) => {
     </div>
   );
 };
-const addToFavorites = (movie) => {
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    favorites.push(movie);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  };
-  
-  <button onClick={() => addToFavorites(movie)}>❤️ Add to Favorites</button>;
-  
+
 export default MovieCard;
