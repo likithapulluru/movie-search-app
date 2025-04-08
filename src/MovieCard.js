@@ -1,22 +1,17 @@
 import React from "react";
 
-const MovieCard = ({ movie }) => {
+const placeholderImage = "https://moviesearchtmdb.netlify.app/image-not-found.png";
+const MovieCard = ({ movie, onClick }) => {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+  const imageUrl = movie.poster_path ? IMAGE_BASE_URL + movie.poster_path : placeholderImage; // Fallback to placeholder if no image
 
   return (
-    <div className="movie-card">
-      <img src={IMAGE_BASE_URL + movie.poster_path} alt={movie.title} />
+    <div className="movie-card" onClick={() => onClick(movie)}>
+      <img src={imageUrl} alt={movie.title} />
       <h3>{movie.title}</h3>
       <p>⭐ {movie.vote_average}</p>
     </div>
   );
 };
-const addToFavorites = (movie) => {
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    favorites.push(movie);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  };
-  
-  <button onClick={() => addToFavorites(movie)}>❤️ Add to Favorites</button>;
-  
+
 export default MovieCard;
